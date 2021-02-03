@@ -4,7 +4,6 @@ package collection;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
@@ -15,7 +14,7 @@ public class CollectionUtilsTest {
 
     @Test
     public void findLastItemOrNull_should_return_null_when_empty_list() {
-        String result = CollectionUtils.findLastItemOrNull(new ArrayList<String>());
+        String result = CollectionUtils.findLastItemOrNull(new ArrayList<>());
 
         assertNull(result);
     }
@@ -43,11 +42,8 @@ public class CollectionUtilsTest {
 
     @Test
     public void findLastItemOrNull_should_return_last_item_when_set() {
-        Set<String> map = new HashSet<String>() {{
-            add("item1");
-            add("item2");
-            add("item3");
-        }};
+        Set<String> map = Set.of("item1", "item2", "item3");
+
         String result = CollectionUtils.findLastItemOrNull(map);
 
         assertEquals("item3", result);
@@ -62,7 +58,7 @@ public class CollectionUtilsTest {
 
     @Test
     public void findOptionalLastItem_should_return_notPresent_when_empty_list() {
-        Optional<String> result = CollectionUtils.findOptionalLastItem(new ArrayList<String>());
+        Optional<String> result = CollectionUtils.findOptionalLastItem(new ArrayList<>());
 
         assertFalse(result.isPresent());
     }
